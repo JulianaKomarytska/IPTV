@@ -1,0 +1,34 @@
+<img src="<%= poster.med %>" class="muvies-background">
+	<div class="wrapp">
+		<div class="btn forvard">&#10216</div>
+		<div class="muvies-info">
+			<div class="muvies-title"><h1><%= getOneOff(title) %></h1></div>
+			<div><span><%= country %></span> | <span><%= year %></span> | <span><%= makeString(categories, "category_name", getOneOff) %></span></div>
+			<table>
+				<tr>
+					<td><%= getToken("muvies_info.muvies_duration")%>: </td>
+					<td><%= timeDuration(duration) %></td>
+				</tr>
+				<tr>
+					<td><%= getToken("muvies_info.audio_language")%>: </td>
+					<td><%= language %></td>
+				</tr>
+				<tr>
+					<td><%= getToken("muvies_info.rating")%>: </td>
+					<td><%= rating_imdb %></td>
+				</tr>
+				<tr>
+					<td><%= getToken("muvies_info.actors")%>: </td>
+					<td><%= actors %></td>
+				</tr>
+			</table>
+			<div class="muvies-info-custom">
+				<span><%= getToken("muvies_info.cannel")%> Наше любимое кино</span> | <span><%= getToken("muvies_info.recorded")%> <%= recorded_at_ts %></span> | <span><%= getToken("muvies_info.available")%> <%= timeDuration(timeDiffeterce(storage_till_ts)) %></span>
+			</div>
+		</div>
+		<div class="btn loock"><%= getToken("muvies_info.look_btn")%></div>
+		<div class="btn see-later"><%= getToken("muvies_info.watch_later_btn")%></div>
+		<div class="btn buy"><%= getToken("muvies_info.buy_btn")%></div>
+		<div class="muvies-deskription"><%= getOneOff(description) %></div>
+		<div class="btn more"><%= getToken("muvies_info.more_btn")%></div>
+	</div>

@@ -1,0 +1,176 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,400,700&subset=cyrillic-ext");
+body {
+  background: -webkit-radial-gradient(70% -2%, circle, rgba(0, 0, 0, 0.3) 5%, rgba(0, 0, 0, 0.5) 20%, black) no-repeat;
+  background: -o-radial-gradient(70% -2%, circle, rgba(0, 0, 0, 0.3) 5%, rgba(0, 0, 0, 0.5) 20%, black) no-repeat;
+  background: radial-gradient(circle at 70% -2%, rgba(0, 0, 0, 0.3) 5%, rgba(0, 0, 0, 0.5) 20%, black) no-repeat;
+  min-height: 100vh;
+  color: #eeeeee;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; }
+
+.categories-main div, .wrapp .btn, .сarousel-wrapper div {
+  display: inline-block;
+  background-color: rgba(158, 158, 158, 0.5);
+  padding: 10px 20px;
+  -webkit-border-radius: 2px;
+          border-radius: 2px; }
+  .categories-main div:hover, .wrapp .btn:hover, .сarousel-wrapper div:hover, .categories-main div:focus, .wrapp .btn:focus, .сarousel-wrapper div:focus {
+    background-color: #85c2cc; }
+
+.categories-main {
+  margin: 5% 3% 0%;
+  text-align: center;
+  position: relative; }
+  .categories-main .eyar-menu-categories {
+    position: absolute;
+    right: 0; }
+  .categories-main .main-menu-categories {
+    padding: 10px 60px; }
+    .categories-main .main-menu-categories::after {
+      display: inline-block;
+      content: "›";
+      -webkit-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+              transform: rotate(90deg);
+      margin: 0 20px; }
+
+.muvies {
+  margin: 2% 3% 0%; }
+
+.muvies-item {
+  width: 22vw;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px; }
+  .muvies-item:hover, .muvies-item:focus {
+    background-color: #85c2cc;
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
+    -webkit-transition: ease-in-out 0.4s;
+    -o-transition: ease-in-out 0.4s;
+    transition: ease-in-out 0.4s; }
+
+.muvies-item-img {
+  width: 22vw;
+  height: 33vh;
+  -webkit-background-size: cover;
+          background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.muvies-item-info-name {
+  font-weight: bold; }
+
+.muvies-item-info {
+  font-variant: small-caps;
+  line-height: 1.7em;
+  padding: 0.4em 0;
+  font-weight: 100; }
+  .muvies-item-info span {
+    margin-left: 10px; }
+
+.wrapp {
+  background: -webkit-radial-gradient(at 70% 5%, rgba(0, 0, 0, 0.8) 10%, black 45%, black);
+  background: -o-radial-gradient(at 70% 5%, rgba(0, 0, 0, 0.8) 10%, black 45%, black);
+  background: radial-gradient(at 70% 5%, rgba(0, 0, 0, 0.8) 10%, black 45%, black);
+  min-height: 100vh;
+  line-height: 1.8em;
+  padding: 1.5% 5% 1.5% 10%; }
+  .wrapp table td:first-child {
+    white-space: nowrap;
+    vertical-align: top;
+    padding-right: 0.8em; }
+  .wrapp > div {
+    margin: 20px 0; }
+
+.muvies-title {
+  width: 35vw; }
+
+h1 {
+  font-size: 2.5em;
+  font-weight: 300; }
+
+.muvies-background {
+  z-index: -1;
+  width: 100vw;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0; }
+
+.loock::before {
+  display: inline-block;
+  content: "\27F3";
+  margin: 0 5px;
+  line-height: 1em; }
+
+.see-later::before {
+  display: inline-block;
+  content: "\2606";
+  margin: 0 5px;
+  line-height: 1em; }
+
+.muvies-deskription {
+  line-height: 1.5em; }
+
+.forvard {
+  position: absolute;
+  top: 3%;
+  left: 3%; }
+
+.btn {
+  margin-right: 5px; }
+
+.muvies-info-overlay {
+  position: fixed;
+  z-index: 25;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: none; }
+
+.viewport {
+  overflow: hidden;
+  width: 94vw;
+  margin-right: 3vw;
+  margin-left: 3vw;
+  margin-top: 1vw; }
+
+.сarousel-wrapper {
+  width: 10000px;
+  margin-top: 1em;
+  z-index: 10; }
+  .сarousel-wrapper div {
+    min-width: 16vw;
+    margin-right: 0.5vw;
+    text-align: center; }
+
+.categories-custom {
+  position: relative; }
+  .categories-custom .before {
+    display: none;
+    background-color: rgba(158, 158, 158, 0.5);
+    position: absolute;
+    padding: 10px;
+    margin-top: 1em;
+    left: 0;
+    top: 0;
+    z-index: 20; }
+    .categories-custom .before:hover {
+      background-color: #85c2cc; }
+  .categories-custom .after {
+    display: inline-block;
+    background-color: rgba(158, 158, 158, 0.5);
+    position: absolute;
+    padding: 10px;
+    margin-top: 1em;
+    right: 0;
+    top: 0;
+    z-index: 20; }
+    .categories-custom .after:hover {
+      background-color: #85c2cc; }

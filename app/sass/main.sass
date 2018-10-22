@@ -1,0 +1,205 @@
+$text-color: rgba(238, 238, 238, 1)
+$div-background: rgba(158,158,158,0.5)
+$hover-background: rgba(133, 194, 204, 1)
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,700&subset=cyrillic-ext')
+
+body
+	background: radial-gradient(circle at 70% -2%, rgba(0,0,0,0.3) 5%,rgba(0,0,0,0.5) 20%, rgba(0,0,0,1)) no-repeat
+	min-height: 100vh
+	color: $text-color
+	margin: 0
+	padding: 0
+	font-family: 'Roboto', sans-serif
+	font-weight: 400
+
+%div-item
+	display: inline-block
+	background-color: $div-background
+	padding: 10px 20px
+	border-radius: 2px
+
+	&:hover, &:focus
+		background-color: $hover-background
+		
+.categories-main
+	margin: 5% 3% 0%
+	text-align: center
+	position: relative
+
+	div
+		@extend %div-item
+
+	.eyar-menu-categories
+		position: absolute
+		right: 0
+
+	.main-menu-categories
+		padding: 10px 60px
+
+		&::after
+			display: inline-block
+			content: "›"
+			transform: rotate(90deg)
+			margin: 0 20px
+
+
+
+.muvies
+	margin: 2% 3% 0%
+
+.muvies-item
+	width: 22vw
+	display: inline-block
+	margin:
+		right: 10px
+		bottom: 10px
+
+
+
+	&:hover, &:focus
+		background-color: $hover-background
+		transform: scale(1.05)
+		transition: ease-in-out 0.4s
+
+
+.muvies-item-img
+	width: 22vw
+	height: 33vh
+	background-size: cover
+	background-repeat: no-repeat
+	background-position: center
+
+.muvies-item-info-name
+	font-weight: bold
+
+.muvies-item-info
+	font-variant: small-caps
+	line-height: 1.7em
+	padding: 0.4em 0
+	font-weight: 100
+
+	span
+		margin-left: 10px
+
+// Страница инфо фильма
+.wrapp
+	background: radial-gradient(at 70% 5%, rgba(0,0,0,0.8) 10%, rgba(0,0,0,1) 45%, rgba(0,0,0,1))
+	min-height: 100vh
+	line-height: 1.8em
+	padding: 1.5% 5% 1.5% 10%
+
+	table
+
+		td:first-child
+			white-space: nowrap
+			vertical-align: top
+			padding-right: 0.8em
+
+	.btn 
+		@extend %div-item
+
+	> div
+		margin: 20px 0
+	
+.muvies-title
+	width: 35vw
+
+h1
+	font-size: 2.5em
+	font-weight: 300
+
+.muvies-background
+	z-index: -1
+	width: 100vw
+	height: auto
+	position: fixed
+	top: 0
+	left: 0
+
+.loock
+	&::before
+		display: inline-block
+		content: "\27F3"
+		margin: 0 5px
+		line-height: 1em
+
+.see-later
+	&::before
+		display: inline-block
+		content: "\2606"
+		margin: 0 5px
+		line-height: 1em
+
+.muvies-deskription
+	line-height: 1.5em
+
+.forvard
+	position: absolute
+	top: 3%
+	left: 3%
+
+// Общая страница фильмов
+
+.btn
+	margin:
+		right: 5px
+
+.muvies-info-overlay
+	position: fixed
+	z-index: 25
+	top: 0
+	left: 0
+	min-height: 100vh
+	min-width: 100vw
+	display: none
+
+// Карусель категорий
+
+.viewport
+	overflow: hidden
+	width: 94vw
+	margin:
+		right: 3vw
+		left: 3vw
+		top: 1vw
+
+.сarousel-wrapper
+	width: 10000px
+	margin-top: 1em
+	z-index: 10
+
+	div	
+		@extend %div-item
+		min-width: 16vw
+		margin-right: 0.5vw
+		text-align: center
+
+.categories-custom
+	position: relative
+
+	.before
+		display: none;
+		background-color: $div-background
+		position: absolute
+		padding: 10px
+		margin-top: 1em
+		left: 0
+		top: 0
+		z-index: 20
+
+		&:hover
+			background-color: $hover-background
+
+	.after
+		display: inline-block
+		background-color: $div-background
+		position: absolute
+		padding: 10px
+		margin-top: 1em
+		right: 0
+		top: 0
+		z-index: 20
+
+		&:hover
+			background-color: $hover-background
