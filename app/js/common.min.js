@@ -23,7 +23,7 @@ function RequestToServer (url, params, callback) {
 $.ajax({
 url: API_HOST + url,
 type: "POST",
-data: _.extend(params, (localStorage.getItem("authorization_key"))? localStorage.getItem("authorization_key") : (autorization_data.authorization_key)? {"authorization_key": autorization_data.authorization_key} : {}),
+data: _.extend(params, (localStorage.getItem("authorization_key"))? localStorage.getItem("authorization_key") : (typeof(autorization_data) != 'undefined') ? {"authorization_key": autorization_data.authorization_key} : {}),
 crossDomain: true,
 dataType: "json",
 success: function (response) {
@@ -184,7 +184,7 @@ function Carousel (options) {
 	$('<div>', {class: 'сarousel-wrapper'}).appendTo(options.wrapper)
 	// Вычисление первичного офсета
 	var current_left_offset = ($('.сarousel-wrapper').offset()).left;
-	var left_offset_to_viewport_end = (($(wrapp).offset()).left + ($(wrapp).width()));
+	var left_offset_to_viewport_end = (($(wrapp).offset()).left + ($(wrapp).outerWidth()));
 	var left_offset_to_viewport = ($(wrapp).offset()).left;
 
 
@@ -210,9 +210,7 @@ function Carousel (options) {
 	};
 
 
-	function carouselNext(e) {
-		console.log(e);
-		
+	function carouselNext (e) {		
 		current_left_offset -= current_item_width;
 
 		$('.сarousel-wrapper').offset({left: current_left_offset});
@@ -223,7 +221,6 @@ function Carousel (options) {
 		};
 
 		doCurrentItem();
-		console.log(counter);
 		
 		var last_item_offset_left = ($('.сarousel-wrapper .btn:last').offset()).left;
 
@@ -249,9 +246,7 @@ function Carousel (options) {
 		$('.сarousel-wrapper').offset({left: current_left_offset});
 		
 		var first_item_offset_left = ($('.сarousel-wrapper .btn:first').offset()).left;
-			console.log(left_offset_to_viewport);
-			console.log(first_item_offset_left);
-			
+		
 		if (left_offset_to_viewport <= first_item_offset_left) {
 			$(prev_btn).css({'display':'none'});
 			$('.current_item').removeClass('current_item');
