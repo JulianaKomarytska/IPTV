@@ -34,17 +34,22 @@ gulp.task ('scripts', function() {
 	.pipe(gulp.dest('app/js'));
 });
 
-gulp.task('concat-js', function() {
+gulp.task('concat-view', function(){
+	return gulp.src('app/js/Views/*.js')
+	.pipe(concat('views.js'))
+	.pipe(gulp.dest('app/js'));
+});
+
+gulp.task('concat-js', ['concat-view'], function() {
 	return gulp.src([
-		'app/js/common.js',
 		'app/js/localization.js',
-		'app/js/muvies.js',
-		'app/js/muvies_info.js',
+		'app/js/routes/*.js',
+		'app/js/views.js',
+		'app/js/common.js',
 		])
 	.pipe(concat('common.min.js'))
 	.pipe(gulp.dest('app/js'));
 });
-
 
 gulp.task ('css-libs', ['sass'], function(){
 	return gulp.src('app/css/libs.css')
@@ -125,7 +130,10 @@ gulp.task('build', ['clean', 'sass', 'scripts', 'img'], function() {
 		])
 	.pipe(gulp.dest('dist/fonts'));
 
-	var buildJs = gulp.src(['app/js/**/*.js'])
+	var buildJs = gulp.src([
+		'app/js/common.min.js',
+		'app/js/libs.min.js'
+		])
 	.pipe(gulp.dest('dist/js'));
 
 	var buildJSON = gulp.src(['app/js/*.json'])

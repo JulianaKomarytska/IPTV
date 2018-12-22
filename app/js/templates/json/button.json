@@ -1,1 +1,1 @@
-{"md5":"67bd529b7a951771f822fc3fecea9114","value":"<div class=\"btn\"><%= getOneOff(category_name) %></div>"}
+{"md5":"2ce3ec21340d8f7ee85bb05d8ed65a73","value":"<div class=\"btn\" data-id=\"<%= id %>\" ><%= getOneOff(category_name) %></div>"}

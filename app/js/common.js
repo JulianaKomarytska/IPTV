@@ -5,36 +5,41 @@ window.language = "RU" // "UA", "RU", "EN"
 // ------------------------------------------------ Аяксы ----------------------------------- 
 // Запрос объекта с шаблонами страниц
 var allTemplates = {}
+
 $.ajax({
-url: '/js/compiled.json',
-type: "GET",
-dataType: "json",
-success: function (response) {
-console.log ('success_json', response) 
-allTemplates = response;
-afterLoad()
-},
-error: function (response) {
-console.log ('error_json', response)
-}});
+	url: '/js/compiled.json',
+	type: "GET",
+	dataType: "json",
+	success: function (response) {
+		console.log ('init request success_json', response) 
+		allTemplates = response;
+		initApp();
+	},
+	error: function (response) {
+		console.log ('init request error_json', response)
+	}
+});
 
 // Запрос на авторизацию на сервере 
 function RequestToServer (url, params, callback) {
 $.ajax({
-url: API_HOST + url,
-type: "POST",
-data: _.extend(params, (localStorage.getItem("authorization_key"))? localStorage.getItem("authorization_key") : (typeof(autorization_data) != 'undefined') ? {"authorization_key": autorization_data.authorization_key} : {}),
-crossDomain: true,
-dataType: "json",
-success: function (response) {
-console.log ('success', response)
-if (!!callback) {callback (response)
-}},
-error: function (response) {
-console.log ('error', response)
-if (!!callback) {callback (response)}
-}
-})
+	url: API_HOST + url,
+	type: "POST",
+	data: _.extend(params, (localStorage.getItem("authorization_key"))? localStorage.getItem("authorization_key") : (typeof(autorization_data) != 'undefined') ? {"authorization_key": autorization_data.authorization_key} : {}),
+	crossDomain: true,
+	dataType: "json",
+	success: function (response) {
+		console.log ('success', response)
+		if (!!callback) {
+			callback (response)
+		}
+	},
+	error: function (response) {
+		console.log ('error', response)
+		if (!!callback) {
+			callback (response)}
+		}
+	})
 };
 
 
@@ -170,95 +175,79 @@ function makeString(arr, data, callback) {
 	return preConcatArray[0]
 };
 
+function initApp() {
+	// Пример запроса для авторизации 
+	// RequestToServer ('http://api.divan.tv/v1/authorization', {client_key: "8a66efabeee725d313673361fa3728c21430809f", device_type: "3"}, GetResponse)
+	AUTORISATION_PARAMS = {
+		client_key: "8a66efabeee725d313673361fa3728c21430809f",
+		device_type: "3"
+	}
 
-//Корструктор карусели
+	// Авторизация
+	function doAutorization () {
+		RequestToServer ("authorization", AUTORISATION_PARAMS, setAutorisationData)
+	}
 
-function Carousel (options) {
-	console.log (options)
-	var wrapp = options.wrapper;
-	var counter = 0;
-	var prev_btn = $('.before');
-	var next_btn = $('.after');
+	doAutorization ();
+
+	// Обработчик-ответа сервера. Запись в глобальную переменную объекта ответа
+	function setAutorisationData (response) {
+		if (response.code === 200) {
+			console.log('set auth')
+			window.autorization_data = response.data;
+			localStorage.setItem( "authorization_key", autorization_data.authorization_key);
+			buildMainMenu();
+			initRoutes();
+		} else {
+			console.log ("try again")
+		};
+	};
 	
-	// Создание враппера карусели
-	$('<div>', {class: 'сarousel-wrapper'}).appendTo(options.wrapper)
-	// Вычисление первичного офсета
-	var current_left_offset = ($('.сarousel-wrapper').offset()).left;
-	var left_offset_to_viewport_end = (($(wrapp).offset()).left + ($(wrapp).outerWidth()));
-	var left_offset_to_viewport = ($(wrapp).offset()).left;
 
-
-	// создание элементов карусели
-	items_array_render =  function() {
-		var template_name = options.template
-		var item_template = _.template(Templates[template_name]);
-		for (var i = 0; i < options.response.length; i++) {
-			$('.сarousel-wrapper').append(item_template(options.response[i]))
-		};
-		doCurrentItem();
-		$(prev_btn).on('click', function(e){carouselBack(e)});
-		$(next_btn).on('click', function(e){carouselNext(e)});
+	// ------------------------------------------------------------ Построение страницы -----------------------------------
+	
+	// Подготовка объекта allTemplates к использованию для геренации страниц. 
+	//Сохранение в отдельный объект свойств со строкой шаблона под названием имени шаблона
+	Templates = {}
+	for (var key in allTemplates) {
+		Templates[key] = allTemplates[key].value
 	};
 
-	items_array_render();
-
-	var current_item_width = $('.current_item').outerWidth(true);
-
-
-	function doCurrentItem() {
-		$('.сarousel-wrapper .btn').eq([counter]).addClass('current_item');
-	};
-
-
-	function carouselNext (e) {		
-		current_left_offset -= current_item_width;
-
-		$('.сarousel-wrapper').offset({left: current_left_offset});
-		$('.current_item').removeClass('current_item');
-		counter += 1;
-		if (counter > 0) {
-			$(prev_btn).css({'display': 'inline-block'});
-		};
-
-		doCurrentItem();
-		
-		var last_item_offset_left = ($('.сarousel-wrapper .btn:last').offset()).left;
-
-		if (left_offset_to_viewport_end >= last_item_offset_left) {
-			$(next_btn).css({'display':'none'});
-			counter = $('.сarousel-wrapper .btn').length - 1;
-			$('.current_item').removeClass('current_item');
-			doCurrentItem();
-		};
-
-	};
-
-	function carouselBack(e) {
-		console.log(e);
-		$('.current_item').removeClass('current_item');
-		counter -=1;
-		doCurrentItem();
-		
-		if (counter < ($('.сarousel-wrapper .btn').length - 1)){
-			$(next_btn).css({'display':'inline-block'});
-		};
-		current_left_offset += current_item_width;
-		$('.сarousel-wrapper').offset({left: current_left_offset});
-		
-		var first_item_offset_left = ($('.сarousel-wrapper .btn:first').offset()).left;
-		
-		if (left_offset_to_viewport <= first_item_offset_left) {
-			$(prev_btn).css({'display':'none'});
-			$('.current_item').removeClass('current_item');
-			counter = 0;
-			doCurrentItem();
-
-		};
-
-	};
 
 };
+// -------------------------------- Роутер
+function buildMainMenu() {
+	new MoviesSidebar({
+			el: '.sidebar',
+			template: 'sidebar'
+		});
+}
+function initRoutes () {
+	window.router = new AppRouters();
 
+	router.on('route:cabinet', function(){
+			new Cabinet({
+				el: '.content-container'
+			});
 
-// TODO
-// Троеточие?.... 
+		});
+
+	router.on('route:defaultRoute', function(){
+		$(".content-container").html("");
+		 console.log('default')		
+		new MainPage({
+			template: 'main',
+			el: '.content-container',
+		});
+	});
+
+	router.on('route:movies', function(){
+		$(".content-container").html("");	
+		new MoviesPage({
+			template: "muvies",
+			el: ".content-container"
+		});
+	})	
+
+	Backbone.history.start();
+}

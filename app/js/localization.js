@@ -1,5 +1,16 @@
 var Localisation = {
 	UA: {
+		"nav":{
+			"search" : "Пошук",
+			"main" : "Головна",
+			"channels" : "Канали",
+			"archive" : "Крхiв",
+			"cinema" : "Кiно",
+			"radio" : "Радiо",
+			"cabinet" : "Кабiнет",
+			"exit" : "Выхiд",
+		},
+
 		"muvies_info" : {
 			"muvies_duration" : "Тривалість",
 			"audio_language" : "Мова аудіо",
@@ -12,6 +23,8 @@ var Localisation = {
 			"watch_later_btn" : "Переглянути пізніше",
 			"buy_btn" : "Купити",
 			"more_btn" : "Детальніше",
+			"category_empty": "Нажаль данна категорiя порожня",
+			"all" : "Всi",
 		},
 		"time_counter" : {
 			"years" : "р", 
@@ -38,6 +51,17 @@ var Localisation = {
 	},
 	
 	RU: {
+		"nav":{
+			"search" : "Поиск",
+			"main" : "Главная",
+			"channels" : "Каналы",
+			"archive" : "Архив",
+			"cinema" : "Кинотеатр",
+			"radio" : "Радио",
+			"cabinet" : "Кабинет",
+			"exit" : "Выход",
+		},
+
 		"muvies_info" : {
 			"muvies_duration" : "Длительность",
 			"audio_language" : "Язык аудио",
@@ -50,6 +74,8 @@ var Localisation = {
 			"watch_later_btn" : "Посмотреть позже",
 			"buy_btn" : "Купить",
 			"more_btn" : "Подробнее",
+			"category_empty": "К сожалению данная категария пуста",
+			"all" : "Все",
 		},
 		"time_counter" : {
 			"years" : "г",
@@ -75,6 +101,17 @@ var Localisation = {
 			
 	},
 	EN: {
+		"nav":{
+			"search" : "Search",
+			"main" : "Main",
+			"channels" : "Channels",
+			"archive" : "Archive",
+			"cinema" : "Cinema",
+			"radio" : "Radio",
+			"cabinet" : "Cabinet",
+			"exit" : "Exit",
+		},
+
 		"muvies_info" : {
 			"muvies_duration" : "Duration",
 			"audio_language" : "Audio language",
@@ -87,6 +124,8 @@ var Localisation = {
 			"watch_later_btn" : "Watch later",
 			"buy_btn" : "Buy",
 			"more_btn" : "Read more",
+			"category_empty": "Unfortunately this category are empty",
+			"all" : "All",
 		},
 		"time_counter" : {
 			"years" : "years",
