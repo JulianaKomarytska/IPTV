@@ -1,0 +1,1 @@
+{"md5":"f6dcb35f80ca390a416fe5a9caeaff48","value":"<div class='btn group_btn' data-id=<%= id %>><%= getOneOff(group_name) || group_name %></div>"}
