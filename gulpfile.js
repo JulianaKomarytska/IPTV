@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	browserSync = require('browser-sync'),
+	reload = browserSync.reload,
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglifyjs'),
 	cssnano = require('gulp-cssnano'),
@@ -20,7 +21,7 @@ gulp.task('sass', function() {
 	.pipe(sass())
 	.pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {cascade: true}))
 	.pipe(gulp.dest('app/css'))
-	.pipe(browserSync.reload({stream: true}))
+	.pipe(reload({stream: true}))
 });
 
 gulp.task ('scripts', function() {
@@ -31,13 +32,15 @@ gulp.task ('scripts', function() {
 		])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())
-	.pipe(gulp.dest('app/js'));
+	.pipe(gulp.dest('app/js'))
+	.pipe(reload({stream: true}))
 });
 
 gulp.task('concat-view', function(){
 	return gulp.src('app/js/Views/*.js')
 	.pipe(concat('views.js'))
-	.pipe(gulp.dest('app/js'));
+	.pipe(gulp.dest('app/js'))
+	.pipe(reload({stream: true}))
 });
 
 gulp.task('concat-js', ['concat-view'], function() {
@@ -48,7 +51,8 @@ gulp.task('concat-js', ['concat-view'], function() {
 		'app/js/common.js',
 		])
 	.pipe(concat('common.min.js'))
-	.pipe(gulp.dest('app/js'));
+	.pipe(gulp.dest('app/js'))
+	.pipe(reload({stream: true}))
 });
 
 gulp.task ('css-libs', ['sass'], function(){
@@ -112,9 +116,9 @@ gulp.task('img', function() {
 
 gulp.task ('watch', ['browser-sync', 'css-libs', 'scripts', 'concat-js', 'json'], function () {
 	gulp.watch('app/sass/**/*.sass', [sass]);
-	gulp.watch('app/**/*.html', browserSync.reload)
-	gulp.watch('app/js/**/*.js', browserSync.reload)
-	gulp.watch('app/js/*.json', browserSync.reload)
+	gulp.watch('app/**/*.html', browserSync.reload);
+	gulp.watch('app/js/**/*.js', ['concat-js']);
+	gulp.watch('app/js/*.json', [json]);
 });
 
 

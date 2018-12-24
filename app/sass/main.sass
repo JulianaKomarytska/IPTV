@@ -225,6 +225,9 @@ h1
 	position: fixed
 	z-index: 5
 	top: 0
+	.mobile-toggle-mnu
+		display: none
+
 	.logo
 		height: 8em
 		img
@@ -301,3 +304,59 @@ h1
     ~ .content-container
     	filter: blur(5px)
     	pointer-events: none
+    .mobile-toggle-mnu
+	    margin:
+	    	left: 1.5em
+	    	top: 2em
+
+
+
+@media screen and (max-device-width: 768px)
+	.content-container
+		margin-left: auto
+	.showSidebar
+		ul
+			.logo
+				img
+					display: none
+
+	.mobile-mnu
+		display: block
+		height: 4em
+		width: 4em
+		margin: 1em 1.5em
+		border-radius: 4px
+		li
+			display: none
+	.sidebar
+		.mobile-toggle-mnu
+			display: block
+			padding: 0 0.5em
+			max-width: 4em
+
+			span
+				position: relative
+				display: block
+
+				&:after, &:before
+					content: ''
+					position: absolute
+					top: 1em
+				&:after
+					top: 2em
+
+			span, span:after, span:before
+				width: 100%
+				height: 2px
+				background-color: #fff
+				transition: all 0.3s
+				backface-visibility: hidden
+				border-radius: 2px
+	.on
+		.mobile-toggle-mnu
+			span
+				background-color: transparent
+			span:after
+				transform: rotate(45deg) translate(-10px, -10px)
+			span:before
+				transform: rotate(-45deg) translate(-1px, 0px)

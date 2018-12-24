@@ -203,6 +203,8 @@ h1 {
   position: fixed;
   z-index: 5;
   top: 0; }
+  .sidebar .mobile-toggle-mnu {
+    display: none; }
   .sidebar .logo {
     height: 8em; }
     .sidebar .logo img {
@@ -284,3 +286,55 @@ h1 {
     -webkit-filter: blur(5px);
             filter: blur(5px);
     pointer-events: none; }
+  .showSidebar .mobile-toggle-mnu {
+    margin-left: 1.5em;
+    margin-top: 2em; }
+
+@media screen and (max-device-width: 768px) {
+  .content-container {
+    margin-left: auto; }
+  .showSidebar ul .logo img {
+    display: none; }
+  .mobile-mnu {
+    display: block;
+    height: 4em;
+    width: 4em;
+    margin: 1em 1.5em;
+    -webkit-border-radius: 4px;
+            border-radius: 4px; }
+    .mobile-mnu li {
+      display: none; }
+  .sidebar .mobile-toggle-mnu {
+    display: block;
+    padding: 0 0.5em;
+    max-width: 4em; }
+    .sidebar .mobile-toggle-mnu span {
+      position: relative;
+      display: block; }
+      .sidebar .mobile-toggle-mnu span:after, .sidebar .mobile-toggle-mnu span:before {
+        content: '';
+        position: absolute;
+        top: 1em; }
+      .sidebar .mobile-toggle-mnu span:after {
+        top: 2em; }
+    .sidebar .mobile-toggle-mnu span, .sidebar .mobile-toggle-mnu span:after, .sidebar .mobile-toggle-mnu span:before {
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      -webkit-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+      -webkit-backface-visibility: hidden;
+              backface-visibility: hidden;
+      -webkit-border-radius: 2px;
+              border-radius: 2px; }
+  .on .mobile-toggle-mnu span {
+    background-color: transparent; }
+  .on .mobile-toggle-mnu span:after {
+    -webkit-transform: rotate(45deg) translate(-10px, -10px);
+        -ms-transform: rotate(45deg) translate(-10px, -10px);
+            transform: rotate(45deg) translate(-10px, -10px); }
+  .on .mobile-toggle-mnu span:before {
+    -webkit-transform: rotate(-45deg) translate(-1px, 0px);
+        -ms-transform: rotate(-45deg) translate(-1px, 0px);
+            transform: rotate(-45deg) translate(-1px, 0px); } }

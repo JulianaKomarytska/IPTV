@@ -20,11 +20,21 @@ var MoviesSidebar = Backbone.View.extend({
 	render: function(){
 		var sidebar = _.template(Templates[this.template]);
 		this.$el.prepend(sidebar({}));
+		if($('body').outerWidth() <= 768) {
+			this.$el.addClass('mobile-mnu');
+		}
 	},
 
 	toggleSidebar: function(e){
 		console.log("1", this)
 		this.$el.toggleClass("showSidebar");
+		if(this.$el.hasClass("showSidebar") && $('body').outerWidth() <= 768) {
+			this.$el.removeClass("mobile-mnu")
+			this.$el.addClass("on")
+		} else  if ($('body').outerWidth() <= 768){
+			this.$el.toggleClass("mobile-mnu");
+			this.$el.toggleClass("on");
+		};
 /*		this.$el.find(".sidebar").css({"width":"max-content"});
 		this.$el.find('li').css({"width":"max-content", "margin":"1em 1.5em", "text-indent": "3.5em"});
 		this.$el.find('.logo img').css({"display":"block"});
@@ -34,6 +44,9 @@ var MoviesSidebar = Backbone.View.extend({
 
 	hideSidebar: function(e){
 		this.$el.removeClass("showSidebar");
+		if($('body').outerWidth() <= 768) {
+			this.$el.addClass('mobile-mnu');
+		}
 		/*ddd = this.$el;
 		console.log('2133213', this.$el, "this.$el.find('.sidebar') ", this.$el.find('.sidebar'));
 		this.$el.find('.sidebar').css({"width":"6em"});

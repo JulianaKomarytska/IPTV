@@ -85,7 +85,8 @@ var MoviesBrowsElement = Backbone.View.extend ({
 	showMovieDescriptionElement: function(e){
 		new MovieDescriptionElement({
 			movie_id: e.currentTarget.attributes['data-id']['value'],
-			el: '.content-container > .muvies-info-overlay'
+			el: '.content-container > .muvies-info-overlay',
+			collection: this.collection,
 		});
 	},
 
@@ -239,29 +240,46 @@ var MovieCategoriesCarousel = Backbone.View.extend({
 	
 });
 	var MovieDescriptionElement = Backbone.View.extend({
-	initialize: function(options){
-	  this.options = options;
-	  RequestToServer('movies/info', {"authorization_key": autorization_data.authorization_key, "movie_id": options.movie_id}, _.bind(this.render, this));
-	},
-	prepareData: function() {
+		events: {
+			//"click .loock" : "showPreview",
+		},
 
-	},
-	render: function(response) {
-		var self = this;
-		var muvies_info = _.template(Templates.muvies_info);
-		this.$el.html(muvies_info(response.data.data));
-		this.$el.css({'display': 'block'});
-		$('body').css({'overflow':'hidden'});
-		$('.forvard').on('click', self.hide);
+		initialize: function(options){
+		  this.options = options;
+		  this.collection = options.collection;
+		  RequestToServer('movies/info', {"authorization_key": autorization_data.authorization_key, "movie_id": options.movie_id}, _.bind(this.render, this));
+		},
+		prepareData: function() {
 
-	},
-	hide: function(e) {
-		$('.muvies-info-overlay').css({'display': 'none'});
-		$('body').css({'overflow':'auto'});
+		},
+		render: function(response) {
+			this.responseData = response.data.data;
+			var self = this;
+			var muvies_info = _.template(Templates.muvies_info);
+			this.$el.html(muvies_info(this.responseData));
+			this.$el.css({'display': 'block'});
+			$('body').css({'overflow':'hidden'});
+			$('.forvard').on('click', self.hide);
 
-	}
+		},
+		hide: function(e) {
+			$('.muvies-info-overlay').css({'display': 'none'});
+			$('body').css({'overflow':'auto'});
+
+		},
+
+		/*showPreview: function(e){
+			new MoviesPreview({
+				el: ".muvies-info-overlay .wrapp",
+				template: "MoviesPreviewPlayer",
+				data: this.responseData,
+			})
+		}*/
+
+
 
 	});
+
 var MoviesPage = Backbone.View.extend({
 	initialize: function(options){
 		this.options = options;
@@ -385,11 +403,21 @@ var MoviesSidebar = Backbone.View.extend({
 	render: function(){
 		var sidebar = _.template(Templates[this.template]);
 		this.$el.prepend(sidebar({}));
+		if($('body').outerWidth() <= 768) {
+			this.$el.addClass('mobile-mnu');
+		}
 	},
 
 	toggleSidebar: function(e){
 		console.log("1", this)
 		this.$el.toggleClass("showSidebar");
+		if(this.$el.hasClass("showSidebar") && $('body').outerWidth() <= 768) {
+			this.$el.removeClass("mobile-mnu")
+			this.$el.addClass("on")
+		} else  if ($('body').outerWidth() <= 768){
+			this.$el.toggleClass("mobile-mnu");
+			this.$el.toggleClass("on");
+		};
 /*		this.$el.find(".sidebar").css({"width":"max-content"});
 		this.$el.find('li').css({"width":"max-content", "margin":"1em 1.5em", "text-indent": "3.5em"});
 		this.$el.find('.logo img').css({"display":"block"});
@@ -399,6 +427,9 @@ var MoviesSidebar = Backbone.View.extend({
 
 	hideSidebar: function(e){
 		this.$el.removeClass("showSidebar");
+		if($('body').outerWidth() <= 768) {
+			this.$el.addClass('mobile-mnu');
+		}
 		/*ddd = this.$el;
 		console.log('2133213', this.$el, "this.$el.find('.sidebar') ", this.$el.find('.sidebar'));
 		this.$el.find('.sidebar').css({"width":"6em"});
@@ -419,4 +450,17 @@ var MoviesSidebar = Backbone.View.extend({
 	renderMoviesPage: function(){
 		router.navigate("movies", {trigger: true});
 	},
+});
+var MoviesPreview = Backbone.View.extend({
+	initialize: function(options){
+		this.options = options;
+		this.data = options.data;
+		this.render();
+	},
+
+	render: function(){
+		
+	},
+
+
 });
