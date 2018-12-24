@@ -132,15 +132,12 @@ var MovieCategoriesCarousel = Backbone.View.extend({
 	prepareData: function(response) {
 		var responseData = response.data.data;
 		this.categoriesList = responseData;
-		var categories_array = []
-		var categories = response.data.data;
-		for (var i = 0; i < categories.length; i++) {
-			categories_array[i] = categories[i];
-		};
+		console.log('responseData start', responseData)
 		this.rendenWrapper(responseData);
 	},
 	
-	rendenWrapper: function() {
+	rendenWrapper: function(responseData) {
+		var responseData = responseData;
 		// Создание враппера карусели
 	if($('.сarousel-wrapper') && ($('.сarousel-wrapper').length > 0)) {$('.сarousel-wrapper').remove()};
 	this.before.css({'display': 'none'});
@@ -148,18 +145,17 @@ var MovieCategoriesCarousel = Backbone.View.extend({
 	$('<div>', {class: 'сarousel-wrapper'}).appendTo(this.$el);
 		
 		// Вычисление первичного офсета
-		console.log("this.$el", this.$el)
 	this.current_left_offset = ($(this.$el).offset()).left;
 	this.left_offset_to_viewport_end = (($(this.$el).offset()).left + ($(this.$el).outerWidth()));
 	this.left_offset_to_viewport = ($(this.$el).offset()).left;
-	this.render();
+	this.render(responseData);
 	},
 
-	render: function() {
+	render: function(responseData) {
 
 		var item_template = _.template(Templates[this.template]);
-		for (var i = 0; i < this.categoriesList.length; i++) {
-			$('.сarousel-wrapper').append(item_template(this.categoriesList[i]))
+		for (var i = 0; i < responseData.length; i++) {
+			$('.сarousel-wrapper').append(item_template(responseData[i]))
 		};
 		this.doCurrentItem();
 		this.current_item_width = $('.current_item').outerWidth(true);
@@ -225,6 +221,7 @@ var MovieCategoriesCarousel = Backbone.View.extend({
 	},
 
 	renderCategoryBrowsByGroupId: function(){
+		console.log("123")
 		var self = this.state;
 		var categoriesByGroup = _.filter(this.categoriesList, function(key){
 			var id = self.get('categoryGroupId');
@@ -235,6 +232,7 @@ var MovieCategoriesCarousel = Backbone.View.extend({
 		};
 			
 		});
+		console.log("categoriesByGroup", categoriesByGroup)
 		this.rendenWrapper(categoriesByGroup);
 	},
 	
