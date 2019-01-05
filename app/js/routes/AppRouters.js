@@ -1,8 +1,9 @@
 var AppRouters = Backbone.Router.extend({
 	routes: {
-		'login(/)'	:	 'login',
-		"channels(/)"	: 	"channels",
+		'login(/)'		:	 'login',
+		'channels(/)'	: 	'channels',
 		'cabinet(/)'	: 	"cabinet",
+		'cinema(/)'		: 	"cinema",
 		 // home
         ''	: 	'defaultRoute',
 
@@ -12,6 +13,10 @@ var AppRouters = Backbone.Router.extend({
         // movies
         'movies(/)'	: 	'movies',
         'movies(/)(description)(/)(id)' : 	'movies',
+
+        //search
+        'search(/)'		: 	"search",
+		'search(/)(/query)(/)'		: 	"search",
 
 	},
 

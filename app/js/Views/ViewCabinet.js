@@ -1,4 +1,4 @@
-var Cabinet = Backbone.View.extend({
+/*var Cabinet = Backbone.View.extend({
 	initialize: function(options){
 		this.options = options;
 		this.router = options.router;
@@ -12,4 +12,4 @@ var Cabinet = Backbone.View.extend({
 		this.$el.html(inner);
 	},
 
-});
+});*/

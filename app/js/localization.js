@@ -9,6 +9,7 @@ var Localisation = {
 			"radio" : "Радiо",
 			"cabinet" : "Кабiнет",
 			"exit" : "Выхiд",
+			"back_home" : "На головну",
 		},
 
 		"muvies_info" : {
@@ -23,8 +24,9 @@ var Localisation = {
 			"watch_later_btn" : "Переглянути пізніше",
 			"buy_btn" : "Купити",
 			"more_btn" : "Детальніше",
-			"category_empty": "Нажаль данна категорiя порожня",
+			"category_empty": "На жаль дана категорія порожня",
 			"all" : "Всi",
+			"empty_page" : "Упс! Ми не знайшли данных по цьому запиту",
 		},
 		"time_counter" : {
 			"years" : "р", 
@@ -47,6 +49,10 @@ var Localisation = {
 			"11" : "листопада",
 			"12" : "грудня",
 		},
+		"pages": {
+			"search" : "Що будемо шукаты?",
+			"error301": "Здаеться щось пішло не так і фільм зник :(",
+		},
 			
 	},
 	
@@ -60,6 +66,7 @@ var Localisation = {
 			"radio" : "Радио",
 			"cabinet" : "Кабинет",
 			"exit" : "Выход",
+			"back_home" : "На главную",
 		},
 
 		"muvies_info" : {
@@ -76,6 +83,7 @@ var Localisation = {
 			"more_btn" : "Подробнее",
 			"category_empty": "К сожалению данная категария пуста",
 			"all" : "Все",
+			"empty_page" : "Упс! К сожалению мы не нашли данных по Вашему запросу",
 		},
 		"time_counter" : {
 			"years" : "г",
@@ -98,6 +106,10 @@ var Localisation = {
 			"11" : "ноября",
 			"12" : "декабря",
 		},
+		"pages": {
+			"search" : "Что будем искать?",
+			"error301" : "Кажется что-то пошло не по плану и фильм пропал :("
+		},
 			
 	},
 	EN: {
@@ -110,6 +122,7 @@ var Localisation = {
 			"radio" : "Radio",
 			"cabinet" : "Cabinet",
 			"exit" : "Exit",
+			"back_home" : "Back home",
 		},
 
 		"muvies_info" : {
@@ -126,6 +139,7 @@ var Localisation = {
 			"more_btn" : "Read more",
 			"category_empty": "Unfortunately this category are empty",
 			"all" : "All",
+			"empty_page" : "Oops! Nothing to see here"
 		},
 		"time_counter" : {
 			"years" : "years",
@@ -147,6 +161,10 @@ var Localisation = {
 			"10" : "October",
 			"11" : "November",
 			"12" : "December",
+		},
+		"pages": {
+			"search" : "what are we looking for?",
+			"error301" : "Wow! It seems like we lost this video :("
 		},
 		
 	},

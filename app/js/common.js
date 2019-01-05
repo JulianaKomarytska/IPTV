@@ -215,6 +215,7 @@ function initApp() {
 
 
 };
+
 // -------------------------------- Роутер
 function buildMainMenu() {
 	new MoviesSidebar({
@@ -225,18 +226,38 @@ function buildMainMenu() {
 function initRoutes () {
 	window.router = new AppRouters();
 
-	router.on('route:cabinet', function(){
-			new Cabinet({
-				el: '.content-container'
-			});
-
+	router.on('route:search', function(){
+		$(".content-container").html("");
+		new SearchPage({
+			el: '.content-container',
+			template : 'search_page',
 		});
+
+	});
+
+	router.on('route:channels', function(){
+		console.log("channels")
+		$(".content-container").html("");
+		new NoDataPage({
+			el: '.content-container'
+		});
+	});
+
+	router.on('route:cinema', function(){
+		console.log("cinema");
+		$(".content-container").html("");
+		new NoDataPage({
+			el: '.content-container'
+		});
+	});
 
 	router.on('route:defaultRoute', function(){
 		$(".content-container").html("");
 		 console.log('default')		
 		new MainPage({
 			template: 'main',
+			bannerItem: "banner-item",
+			moviesItem: "muvies_item",
 			el: '.content-container',
 		});
 	});
@@ -245,9 +266,14 @@ function initRoutes () {
 		$(".content-container").html("");	
 		new MoviesPage({
 			template: "muvies",
-			el: ".content-container"
+			el: ".content-container",
 		});
 	})	
 
+	router.on('route:search', function(e){
+		console.log("e", e)
+	})
+
 	Backbone.history.start();
-}
+};
+

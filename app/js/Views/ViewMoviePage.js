@@ -10,7 +10,6 @@ var MoviesPage = Backbone.View.extend({
 
 	render: function(){
 		var muvies = Templates[this.template];
-		console.log("MoviesPage this.el", this.$el);
 		this.$el.html(muvies);
 
 		

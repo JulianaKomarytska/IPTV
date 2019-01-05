@@ -2,16 +2,17 @@ var MoviesSidebar = Backbone.View.extend({
 	events:{
 		"click" : "toggleSidebar",
 		"click .content-container": "hideSidebar",
-		"click .cabinet span" : "showCabinet",
 		"click .main span" : "backToHome",
 		"click .logo img" : "backToHome",
-		"click .archive span" : "renderMoviesPage"
+		"click .archive span" : "renderMoviesPage",
+		"click .channels span" : "renderCannelsPage",
+		"click .cinema span" : "renderCinemaPage",
+		"click .search span" : "renderSearchPage",
 	},
 
 	initialize: function(options) {
 		this.options = options;
 		this.template = options.template;
-		this.router = options.router;
 		this.parent = options.parent;
 		this.state = new Backbone.Model;
 		this.render();
@@ -56,15 +57,39 @@ var MoviesSidebar = Backbone.View.extend({
 		$(".content-container div").css({"pointer-events":"auto"});*/
 	},
 
-	showCabinet: function(e){
-		router.navigate("cabinet", {trigger: true});
-	},
 
-	backToHome: function() {
+	backToHome: function(e) {
+		console.log("backToHome", e.target.parentElement);
+		$("li.active").removeClass("active");
+		$(e.target.parentElement).addClass("active")
 		router.navigate("", {trigger: true});
 	},
 
-	renderMoviesPage: function(){
+	renderMoviesPage: function(e){
+		console.log("renderMoviesPage", e.target.parentElement);
+		$("li.active").removeClass("active");
+		$(e.target.parentElement).addClass("active")
 		router.navigate("movies", {trigger: true});
+	},
+
+	renderCannelsPage: function(e){
+		console.log("renderCannelsPage", e.target.parentElement);
+		$("li.active").removeClass("active");
+		$(e.target.parentElement).addClass("active")
+		router.navigate("channels", {trigger: true});
+	},
+
+	renderCinemaPage: function(e){
+		console.log("renderCinemaPage", e.target.parentElement);
+		$("li.active").removeClass("active");
+		$(e.target.parentElement).addClass("active")
+		router.navigate("cinema", {trigger: true});
+	},
+
+	renderSearchPage: function(e){
+		console.log("backToHome", e.target.parentElement);
+		$("li.active").removeClass("active");
+		$(e.target.parentElement).addClass("active")
+		router.navigate("search", {trigger: true});
 	},
 });

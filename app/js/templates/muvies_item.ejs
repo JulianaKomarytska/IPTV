@@ -1,9 +1,12 @@
 		<div class="muvies-item" data-id="<%= id %>">
-			<div class="muvies-item-img" style="background-image: url(<%= poster.med %>)"></div>
-
-			<div class="muvies-item-timeline"></div>
-			<div class="muvies-item-info">
-				<div><span class="muvies-item-info-name"><%= getOneOff(title) %></span></div>
-				<div><span><%= year %></span>,<span><%= country %></span></div>
+			<div class="muvies-item-img" style="background-image: url(<%= poster.med %>)">
+				<div class="overlay-shadow">
+					<div class="muvies-item-timeline"></div>
+					<div class="muvies-item-info">
+					<div><span class="muvies-item-info-name"><%= getOneOff(title) %></span></div>
+					<div><span><%= year %></span>,<span><%= country %></span></div>
+				</div>
+				</div>
+				
 			</div>
 		</div>

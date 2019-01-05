@@ -21,7 +21,6 @@ var MovieCategoriesCarousel = Backbone.View.extend({
 	prepareData: function(response) {
 		var responseData = response.data.data;
 		this.categoriesList = responseData;
-		console.log('responseData start', responseData)
 		this.rendenWrapper(responseData);
 	},
 	
@@ -34,7 +33,7 @@ var MovieCategoriesCarousel = Backbone.View.extend({
 	$('<div>', {class: 'сarousel-wrapper'}).appendTo(this.$el);
 		
 		// Вычисление первичного офсета
-	this.current_left_offset = ($(this.$el).offset()).left;
+	this.current_left_offset = ($('body').offset()).left;
 	this.left_offset_to_viewport_end = (($(this.$el).offset()).left + ($(this.$el).outerWidth()));
 	this.left_offset_to_viewport = ($(this.$el).offset()).left;
 	this.render(responseData);
@@ -48,7 +47,11 @@ var MovieCategoriesCarousel = Backbone.View.extend({
 		};
 		this.doCurrentItem();
 		this.current_item_width = $('.current_item').outerWidth(true);
-
+		if(
+			($('.сarousel-wrapper .btn:last').offset().left + $('.сarousel-wrapper .btn:last').outerWidth()) <= 
+			($(this.$el).offset().left + $(this.$el).outerWidth())) {
+			this.after.css({'display': 'none'})
+		};
 	}, 
 
 	doCurrentItem: function(){
@@ -59,7 +62,6 @@ var MovieCategoriesCarousel = Backbone.View.extend({
 		$('.current_item').removeClass('current_item');
 		this.counter += 1;
 
-		console.log(this.counter);
 		if (this.counter > 0) {
 			$(this.before).css({'display': 'inline-block'});
 		};
@@ -83,21 +85,25 @@ var MovieCategoriesCarousel = Backbone.View.extend({
 	carouselBack: function() {
 		$('.current_item').removeClass('current_item');
 		this.counter -=1;
-		console.log(this.counter);
 		this.doCurrentItem();
 		
 		if (this.counter < ($('.сarousel-wrapper .btn').length - 1)){
 			$(this.before).css({'display':'inline-block'});
 		};
+
 		this.current_left_offset += this.current_item_width;
+		console.log('this.current_left_offset', this.current_left_offset);
 		$('.сarousel-wrapper').offset({left: this.current_left_offset});
 		
 		var first_item_offset_left = ($('.сarousel-wrapper .btn:first').offset()).left;
 		
 		if (this.left_offset_to_viewport <= first_item_offset_left) {
+			console.log("this.left_offset_to_viewport", this.left_offset_to_viewport, "first_item_offset_left", first_item_offset_left)
 			$(this.before).css({'display':'none'});
+			$(this.after).css({'display': 'inline-block'});
 			$('.current_item').removeClass('current_item');
 			this.counter = 0;
+			$('.сarousel-wrapper').offset({'left': this.left_offset_to_viewport});
 			this.doCurrentItem();
 
 		};
@@ -110,7 +116,6 @@ var MovieCategoriesCarousel = Backbone.View.extend({
 	},
 
 	renderCategoryBrowsByGroupId: function(){
-		console.log("123")
 		var self = this.state;
 		var categoriesByGroup = _.filter(this.categoriesList, function(key){
 			var id = self.get('categoryGroupId');
@@ -121,7 +126,6 @@ var MovieCategoriesCarousel = Backbone.View.extend({
 		};
 			
 		});
-		console.log("categoriesByGroup", categoriesByGroup)
 		this.rendenWrapper(categoriesByGroup);
 	},
 	
