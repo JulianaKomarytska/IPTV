@@ -250,6 +250,15 @@ function initRoutes () {
 			el: '.content-container'
 		});
 	});
+	router.on('route:movie', function(id){
+		$(".content-container").html("");
+		$(".content-container").append("<div class='muvies-info-overlay'>")
+		new MovieDescriptionElement({
+			el: '.content-container > .muvies-info-overlay',
+			movie_id: id,
+			fromRouter: true,
+		});
+	});
 
 	router.on('route:defaultRoute', function(){
 		$(".content-container").html("");

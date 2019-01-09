@@ -3,7 +3,7 @@
 		<div class="btn forvard">&#10216</div>
 		<div class="muvies-info">
 			<div class="muvies-title"><h1><%= getOneOff(title) %></h1></div>
-			<div><span><%= country %></span> | <span><%= year %></span> | <span><%= makeString(categories, "category_name", getOneOff) %></span></div>
+			<div><span><%= country %></span> | <span><%= year %></span> <% if (typeof categories !== 'undefined') { %>  | <span> <%= makeString(categories, "category_name", getOneOff) %></span> <% } %> </div>
 			<table>
 				<tr>
 					<td><%= getToken("muvies_info.muvies_duration")%>: </td>
@@ -15,7 +15,7 @@
 				</tr>
 				<tr>
 					<td><%= getToken("muvies_info.rating")%>: </td>
-					<td><%= rating_imdb %></td>
+					<% if ( typeof rating_imdb !== 'undefined') { %><td><%= rating_imdb %></td> <% } %>
 				</tr>
 				<tr>
 					<td><%= getToken("muvies_info.actors")%>: </td>

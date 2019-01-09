@@ -1,27 +1,21 @@
 var AppRouters = Backbone.Router.extend({
 	routes: {
-		'login(/)'		:	 'login',
-		'channels(/)'	: 	'channels',
-		'cabinet(/)'	: 	"cabinet",
 		'cinema(/)'		: 	"cinema",
-		 // home
-        ''	: 	'defaultRoute',
-
+		'movie/:id'		: 	"movie",
         // tv-series
         'tv-series(/)'	: 	'tv-series',
 
         // movies
         'movies(/)'	: 	'movies',
-        'movies(/)(description)(/)(id)' : 	'movies',
 
         //search
         'search(/)'		: 	"search",
-		'search(/)(/query)(/)'		: 	"search",
-
+ 		// home
+        ''	: 	'defaultRoute',
 	},
 
 	initialize: function(){
-		// Backbone.history.start();
+		// this.route(/^(?:movie)\/(?:[a-zA-Z0-9\-]+-)?([0-9]+)$/, 'movie');
 	},
 
 	

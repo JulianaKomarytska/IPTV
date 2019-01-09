@@ -40,7 +40,7 @@ var MoviesBrowsElement = Backbone.View.extend ({
 		new MovieDescriptionElement({
 			movie_id: e.currentTarget.attributes['data-id']['value'],
 			el: '.content-container > .muvies-info-overlay',
-			collection: this.collection,
+			parentRouter: "movies",
 		});
 	},
 

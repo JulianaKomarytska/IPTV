@@ -7,18 +7,18 @@
 		},
 
 		initialize: function(options){
-		  this.options = options;
-		  this.URLmodel = new Backbone.Model;
-		  // this.listenTo(this.URLmodel, "change", function(){this.on("click .loock", this.showPreview, this)})
-		  RequestToServer('movies/info', {"authorization_key": autorization_data.authorization_key, "movie_id": options.movie_id}, _.bind(this.render, this));
-
-		},
-		prepareData: function() {
-
-
+			this.options = options;
+			this.fromRouter = options.fromRouter;
+			this.movie_id = options.movie_id;
+			this.parentRouter = options.parentRouter;
+			console.log(options)
+			RequestToServer('movies/info', {"authorization_key": autorization_data.authorization_key, "movie_id": this.movie_id}, _.bind(this.render, this));
+			
 		},
 
 		render: function(response) {
+			
+			router.navigate("movie/" + this.movie_id , {silent: true});
 			this.delegateEvents();
 			this.responseData = response.data.data;
 			var self = this;
@@ -41,10 +41,9 @@
 
 					console.log("this.el", this.el)
 				}
-
 			}
+		},		
 
-		},
 
 		hide: function(e) {
 			this.undelegateEvents();
@@ -53,6 +52,11 @@
 			$('body').css({'overflow':'auto'});
 			$(".muvies-info-overlay").find(".wrapp").remove();
 			$(".muvies-info-overlay").find("img").remove();
+			if (this.fromRouter){
+				router.navigate("movies", {trigger: true});
+			} else {
+				router.navigate(this.parentRouter, {silent: true});
+			};
 		
 		},
 
