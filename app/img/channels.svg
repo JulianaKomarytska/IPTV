@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Svg Vector Icons : http://www.onlinewebfonts.com/icon -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 1000 1000"
+   enable-background="new 0 0 1000 1000"
+   xml:space="preserve"
+   id="svg3375"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="channels.svg"><defs
+   id="defs3385" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="640"
+   inkscape:window-height="480"
+   id="namedview3383"
+   showgrid="false"
+   inkscape:zoom="0.236"
+   inkscape:cx="500"
+   inkscape:cy="500"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="svg3375" />
+<metadata
+   id="metadata3377"> Svg Vector Icons : http://www.onlinewebfonts.com/icon <rdf:RDF><cc:Work
+     rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+       rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata>
+<g
+   id="g3379"
+   style="fill:#ffffff"><path
+     d="M949,285.7c-85-12.2-175.5-21.1-270-26.1l157.8-157.8l-61.3-61.3L560.7,255.5c-20.1-0.3-40.3-0.5-60.7-0.5l0,0L255,10l-61.3,61.3l185.9,185.9C263.9,261.2,153.4,271,51,285.7c-26.3,103.1-41,217-41,336.8c0,119.8,14.6,233.7,41,336.8C188.5,979.1,340.3,990,500,990c159.7,0,311.5-11,449-30.7c26.3-103.1,41-217,41-336.8C990,502.7,975.4,388.8,949,285.7z M836.8,847c-103.1,13.2-217,20.5-336.8,20.5c-119.8,0-233.7-7.3-336.8-20.5c-19.8-68.7-30.7-144.7-30.7-224.5c0-79.8,11-155.8,30.7-224.5c103.1-13.2,217-20.5,336.8-20.5c119.8,0,233.7,7.3,336.8,20.5c19.8,68.7,30.7,144.7,30.7,224.5C867.5,702.4,856.5,778.3,836.8,847z"
+     id="path3381"
+     style="fill:#ffffff" /></g>
+</svg>

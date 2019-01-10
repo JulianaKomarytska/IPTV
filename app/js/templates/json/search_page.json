@@ -1,0 +1,1 @@
+{"md5":"d63bffdb27f59c1e803b6e7346a03c18","value":"<div class=\"muvies-info-overlay\"></div>\r\n<div class=\"searchContainer\">\r\n\t<input class=\"search_input\" type=\"search\" autocomplete=\"on\" placeholder=\"<%= getToken(\"pages.search\")%>\">\r\n\t<button type=\"submit\" class=\"find\"></button>\r\n</div>\r\n<div class=\"muvies\">\r\n</div>\r\n"}
